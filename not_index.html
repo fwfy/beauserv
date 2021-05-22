@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <title>BatChat Index Page</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>C:\> BatChat</h1>
+  <p>BatChat, as the name suggests, is a fully-featured batch-file based chat program made by Grub4K. It does not use any external utilities, and is contained entirely in one .bat file.</p>
+  <p>Below is a list of accessible-by-browser endpoints provided by this server.</p>
+  <span hidden id="ref-browserfeatures">
+    <p>Unfortunately, the reference implementation does not provide any browser-useable endpoints at this point in time.</p>
+  </span>
+  <span hidden id="beauserv-browserfeatures">
+    <a href="/chatlog">Chatlog, in JSON format.</a>
+  </span>
+  <span id="failiure-browserfeatures">
+    <p>There was an error whilst determining the server software used. Try refreshing, or contacting the server admin.</p>
+    <noscript>JavaScript is required for this section of the page, but you don't seem to have it enabled. Please turn it on, and then reload.</noscript>
+  </span>
+  <script>
+    fetch(window.location.origin+"/server").then(server => {
+      console.log(server)
+      if(server == "beauserv") {
+        document.getElementById("beauserv-browserfeatures").hidden = false;
+        document.getElementById("failiure-browserfeatures").hidden = true;
+      } else {
+        document.getElementById("ref-browserfeatures").hidden = false;
+        document.getElementById("failiure-browserfeatures").hidden = true;
+      }
+    })
+  </script>
+</body>
