@@ -1,3 +1,5 @@
+# This file is the original BatChat server, and is used as a reference.
+
 import os
 from queue import Queue
 from collections import namedtuple
